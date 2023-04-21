@@ -1,6 +1,8 @@
+import 'package:battery_level_method_channel/controller/battery_level_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import 'home_page.dart';
+import 'view/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,13 +13,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        useMaterial3: true,
-        primarySwatch: Colors.blue,
+    return ChangeNotifierProvider(
+      create: (context) => batteryLevelController(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          useMaterial3: true,
+          primarySwatch: Colors.blue,
+        ),
+        home: MyHomePage(),
       ),
-      home: MyHomePage(),
     );
   }
 }
